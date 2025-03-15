@@ -1,22 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage('Clone Repository') {
+        stage('Fetch Code') {
             steps {
-                script {
-                    git 'https://github.com/Gagan866/Jenkinsscript.git'
-                }
+                echo '✅ Cloning Repository...'
+                bat 'git pull origin main'
             }
         }
-        stage('Compile Java Code') {
+        stage('Compile Java') {
             steps {
+                echo '⚡ Compiling Java Code...'
                 bat 'javac HelloWorld.java'
             }
         }
-        stage('Run Java Program') {
+        stage('Run Java') {
             steps {
+                echo '🚀 Running Java Program...'
                 bat 'java HelloWorld'
             }
         }
     }
 }
+
