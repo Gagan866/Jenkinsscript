@@ -1,24 +1,32 @@
 pipeline {
     agent any
+
     stages {
-        stage('Fetch Code') {
+        stage('Clone Repository') {
             steps {
-                echo '✅ Cloning Repository...'
-                bat 'git pull origin main'
+                script {
+                    echo 'Fetching latest code from GitHub...'
+                    checkout scm
+                }
             }
         }
-        stage('Compile Java') {
+
+        stage('Compile Java Code') {
             steps {
-                echo '⚡ Compiling Java Code...'
-                bat 'javac HelloWorld.java'
+                script {
+                    echo 'Compiling Java File...'
+                    bat 'javac HelloWorld.java'
+                }
             }
         }
-        stage('Run Java') {
+
+        stage('Run Java Program') {
             steps {
-                echo '🚀 Running Java Program...'
-                bat 'java HelloWorld'
+                script {
+                    echo 'Running Java Program...'
+                    bat 'java HelloWorld'
+                }
             }
         }
     }
 }
-
