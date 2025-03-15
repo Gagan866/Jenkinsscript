@@ -4,11 +4,11 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 script {
-                    echo 'Cloning Repository...'
+                    git 'https://github.com/Gagan866/Jenkinsscript.git'
                 }
             }
         }
-        stage('Compile Java') {
+        stage('Compile Java Code') {
             steps {
                 bat 'javac HelloWorld.java'
             }
