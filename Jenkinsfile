@@ -1,19 +1,18 @@
 pipeline {
     agent any
-
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Gagan866/Jenkinsscript.git'
+                script {
+                    echo 'Cloning Repository...'
+                }
             }
         }
-
-        stage('Compile Java Code') {
+        stage('Compile Java') {
             steps {
                 bat 'javac HelloWorld.java'
             }
         }
-
         stage('Run Java Program') {
             steps {
                 bat 'java HelloWorld'
